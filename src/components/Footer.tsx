@@ -1,42 +1,46 @@
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowUp } from "lucide-react";
 
 const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <footer className="py-8 border-t border-border">
+    <footer className="py-12 border-t border-border bg-secondary/30">
       <div className="container px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-6">
-            <span className="text-lg font-semibold text-foreground">
-              JA<span className="text-primary">.</span>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
+            <span className="text-xl font-bold text-foreground">
+              JA<span className="text-gradient">.</span>
             </span>
             <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Md. Jubaidul Alam
+              © {new Date().getFullYear()} Md. Jubaidul Alam. All rights reserved.
             </p>
           </div>
 
-          <div className="flex items-center gap-4">
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-muted-foreground hover:text-foreground transition-colors"
+          <div className="flex items-center gap-2">
+            {[
+              { icon: Github, href: "https://github.com", label: "GitHub" },
+              { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+              { icon: Mail, href: "mailto:jubaidul.ctg.bd@gmail.com", label: "Email" },
+            ].map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target={social.label !== "Email" ? "_blank" : undefined}
+                rel={social.label !== "Email" ? "noopener noreferrer" : undefined}
+                className="p-2.5 rounded-xl text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
+              >
+                <social.icon className="w-5 h-5" />
+              </a>
+            ))}
+            
+            <button
+              onClick={scrollToTop}
+              className="ml-4 p-2.5 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 transition-colors shadow-md shadow-primary/20"
             >
-              <Github className="w-5 h-5" />
-            </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <Linkedin className="w-5 h-5" />
-            </a>
-            <a
-              href="mailto:jubaidul.ctg.bd@gmail.com"
-              className="p-2 text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <Mail className="w-5 h-5" />
-            </a>
+              <ArrowUp className="w-5 h-5" />
+            </button>
           </div>
         </div>
       </div>

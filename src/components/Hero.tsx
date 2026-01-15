@@ -1,140 +1,173 @@
 import { motion } from "framer-motion";
-import { ArrowDown, Github, Linkedin, Mail, Download, MapPin } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, Download, MapPin, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+const stats = [
+  { value: "5+", label: "Years Experience" },
+  { value: "2M+", label: "Users Served" },
+  { value: "4", label: "Companies" },
+  { value: "50K+", label: "Daily Transactions" },
+];
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center">
-      <div className="container px-6 py-20">
-        <div className="max-w-4xl mx-auto">
-          {/* Status */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex items-center gap-2 mb-8"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-            </span>
-            <span className="text-sm text-muted-foreground">Available for opportunities</span>
-          </motion.div>
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute inset-0 bg-gradient-radial" />
+      <div className="absolute inset-0 pattern-dots" />
+      
+      {/* Decorative blobs */}
+      <div className="absolute top-1/4 -right-32 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 -left-32 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
 
-          {/* Name & Title */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="mb-6"
-          >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4">
-              Md. Jubaidul Alam
-            </h1>
-            <p className="text-xl md:text-2xl text-primary font-medium">
-              Senior Backend Engineer
-            </p>
-          </motion.div>
-
-          {/* Location */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-            className="flex items-center gap-2 text-muted-foreground mb-6"
-          >
-            <MapPin className="w-4 h-4" />
-            <span>Dhaka, Bangladesh</span>
-          </motion.div>
-
-          {/* Bio */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-lg text-muted-foreground max-w-2xl mb-8 leading-relaxed"
-          >
-            Senior backend engineering professional with 5+ years of expertise in developing 
-            robust, scalable applications. Specialized in Node.js, TypeScript, and cloud architecture. 
-            Experienced in leading engineering teams and building systems that serve millions of users.
-          </motion.p>
-
-          {/* Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.25 }}
-            className="flex flex-wrap gap-8 mb-10 py-6 border-y border-border"
-          >
+      <div className="container px-6 py-20 relative z-10">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid lg:grid-cols-[1fr,380px] gap-12 lg:gap-16 items-center">
+            {/* Left content */}
             <div>
-              <p className="text-3xl font-bold text-foreground">5+</p>
-              <p className="text-sm text-muted-foreground">Years Experience</p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold text-foreground">2M+</p>
-              <p className="text-sm text-muted-foreground">Users Served</p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold text-foreground">4</p>
-              <p className="text-sm text-muted-foreground">Companies</p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold text-foreground">50K+</p>
-              <p className="text-sm text-muted-foreground">Daily Transactions</p>
-            </div>
-          </motion.div>
+              {/* Status badge */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8"
+              >
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+                <span className="text-sm font-medium text-foreground">Open to Opportunities</span>
+              </motion.div>
 
-          {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-wrap items-center gap-4 mb-10"
-          >
-            <Button size="lg" asChild>
-              <a href="#contact">
-                <Mail className="w-4 h-4 mr-2" />
-                Get in Touch
-              </a>
-            </Button>
-            <Button variant="outline" size="lg" asChild>
-              <a href="#" download>
-                <Download className="w-4 h-4 mr-2" />
-                Download CV
-              </a>
-            </Button>
-          </motion.div>
+              {/* Name */}
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-4 leading-tight"
+              >
+                Md. Jubaidul Alam
+              </motion.h1>
 
-          {/* Social Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.35 }}
-            className="flex items-center gap-4"
-          >
-            <span className="text-sm text-muted-foreground">Connect:</span>
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 rounded-lg border border-border hover:border-primary hover:text-primary transition-colors"
+              {/* Title */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.15 }}
+                className="text-xl md:text-2xl font-semibold text-gradient mb-4"
+              >
+                Senior Backend Engineer
+              </motion.p>
+
+              {/* Location */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="flex items-center gap-2 text-muted-foreground mb-6"
+              >
+                <MapPin className="w-4 h-4" />
+                <span>Dhaka, Bangladesh</span>
+              </motion.div>
+
+              {/* Bio */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.25 }}
+                className="text-lg text-muted-foreground max-w-xl mb-8 leading-relaxed"
+              >
+                Crafting robust, scalable backend systems for 5+ years. Specialized in 
+                <span className="text-foreground font-medium"> Node.js</span>,
+                <span className="text-foreground font-medium"> TypeScript</span>, and
+                <span className="text-foreground font-medium"> cloud architecture</span>. 
+                Building systems that serve millions.
+              </motion.p>
+
+              {/* CTA Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="flex flex-wrap items-center gap-4 mb-8"
+              >
+                <Button size="lg" className="shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all" asChild>
+                  <a href="#contact">
+                    <Sparkles className="w-4 h-4 mr-2" />
+                    Get in Touch
+                  </a>
+                </Button>
+                <Button variant="outline" size="lg" className="hover:bg-secondary" asChild>
+                  <a href="#" download>
+                    <Download className="w-4 h-4 mr-2" />
+                    Download CV
+                  </a>
+                </Button>
+              </motion.div>
+
+              {/* Social Links */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.35 }}
+                className="flex items-center gap-3"
+              >
+                <span className="text-sm text-muted-foreground">Connect:</span>
+                {[
+                  { icon: Github, href: "https://github.com", label: "GitHub" },
+                  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+                  { icon: Mail, href: "mailto:jubaidul.ctg.bd@gmail.com", label: "Email" },
+                ].map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target={social.label !== "Email" ? "_blank" : undefined}
+                    rel={social.label !== "Email" ? "noopener noreferrer" : undefined}
+                    className="p-2.5 rounded-xl bg-secondary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                  >
+                    <social.icon className="w-5 h-5" />
+                  </a>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* Right - Stats cards */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="hidden lg:block"
             >
-              <Github className="w-5 h-5" />
-            </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 rounded-lg border border-border hover:border-primary hover:text-primary transition-colors"
-            >
-              <Linkedin className="w-5 h-5" />
-            </a>
-            <a
-              href="mailto:jubaidul.ctg.bd@gmail.com"
-              className="p-2 rounded-lg border border-border hover:border-primary hover:text-primary transition-colors"
-            >
-              <Mail className="w-5 h-5" />
-            </a>
+              <div className="grid grid-cols-2 gap-4">
+                {stats.map((stat, index) => (
+                  <motion.div
+                    key={stat.label}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                    className="stat-card border border-border hover:border-primary/30 transition-colors"
+                  >
+                    <p className="text-3xl font-bold text-gradient mb-1">{stat.value}</p>
+                    <p className="text-sm text-muted-foreground">{stat.label}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Mobile stats */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 lg:hidden"
+          >
+            {stats.map((stat) => (
+              <div key={stat.label} className="stat-card border border-border">
+                <p className="text-2xl font-bold text-gradient mb-1">{stat.value}</p>
+                <p className="text-xs text-muted-foreground">{stat.label}</p>
+              </div>
+            ))}
           </motion.div>
         </div>
 
@@ -142,11 +175,11 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.5 }}
+          transition={{ delay: 1.2, duration: 0.6 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2"
         >
-          <a href="#experience" className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
-            <span className="text-xs uppercase tracking-wider">Scroll</span>
+          <a href="#experience" className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors group">
+            <span className="text-xs font-medium uppercase tracking-wider">Explore</span>
             <ArrowDown className="w-4 h-4 animate-bounce" />
           </a>
         </motion.div>
