@@ -1,13 +1,6 @@
 import { motion, useInView } from "framer-motion";
-import { GraduationCap, Award, Trophy, Users, Code, TrendingUp } from "lucide-react";
+import { GraduationCap, Award, BookOpen, MapPin } from "lucide-react";
 import { useRef } from "react";
-
-const stats = [
-  { icon: TrendingUp, value: "5+", label: "Years Experience", color: "primary" },
-  { icon: Users, value: "2M+", label: "Users Served", color: "accent" },
-  { icon: Code, value: "50+", label: "Projects Delivered", color: "primary" },
-  { icon: Trophy, value: "Top 10", label: "National Hackathon", color: "accent" },
-];
 
 const Education = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -24,50 +17,18 @@ const Education = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="mb-20"
+          className="mb-16"
         >
           <div className="flex items-center gap-4 mb-4">
-            <span className="font-mono text-sm text-primary">03.</span>
+            <span className="font-mono text-sm text-primary">04.</span>
             <h2 className="text-4xl md:text-6xl font-bold">
               Education<span className="text-primary">.</span>
             </h2>
             <div className="h-px flex-1 max-w-xs bg-gradient-to-r from-border to-transparent" />
           </div>
-        </motion.div>
-
-        {/* Stats Grid */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-16 max-w-5xl mx-auto"
-        >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              className="relative group"
-            >
-              <div className="card-gradient rounded-2xl p-6 border border-border hover:border-primary/40 transition-all duration-500 text-center h-full">
-                <div className={`inline-flex p-3 rounded-xl mb-4 ${
-                  stat.color === 'primary' ? 'bg-primary/10' : 'bg-accent/10'
-                }`}>
-                  <stat.icon className={`w-6 h-6 ${
-                    stat.color === 'primary' ? 'text-primary' : 'text-accent'
-                  }`} />
-                </div>
-                <p className={`text-4xl md:text-5xl font-bold mb-2 ${
-                  stat.color === 'primary' ? 'text-gradient' : 'text-gradient-accent'
-                }`}>
-                  {stat.value}
-                </p>
-                <p className="text-sm text-muted-foreground">{stat.label}</p>
-              </div>
-            </motion.div>
-          ))}
+          <p className="text-muted-foreground text-lg max-w-xl">
+            Academic foundation in Computer Science with continued professional development
+          </p>
         </motion.div>
 
         <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-8">
@@ -75,7 +36,7 @@ const Education = () => {
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="p-3 rounded-xl bg-primary/10 text-primary">
@@ -87,42 +48,53 @@ const Education = () => {
             <div className="space-y-4">
               <div className="card-gradient rounded-2xl p-6 border border-border hover:border-primary/40 transition-all duration-500 group hover:-translate-y-1">
                 <div className="flex items-start justify-between gap-4 mb-3">
-                  <h4 className="font-bold text-lg group-hover:text-gradient transition-all">
-                    B.Sc. in Computer Science & Engineering
-                  </h4>
+                  <div className="flex items-start gap-3">
+                    <BookOpen className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                    <h4 className="font-bold text-lg group-hover:text-gradient transition-all">
+                      B.Sc. in Computer Science & Engineering
+                    </h4>
+                  </div>
                   <span className="px-3 py-1 text-xs font-mono bg-primary/10 text-primary rounded-full whitespace-nowrap">
                     2017-2020
                   </span>
                 </div>
-                <p className="text-primary font-mono text-sm mb-2">
+                <p className="text-primary font-mono text-sm mb-2 ml-8">
                   International University of Business Agriculture and Technology
                 </p>
-                <p className="text-muted-foreground text-sm">
-                  Comprehensive study in software engineering, data structures, algorithms, and system design.
-                </p>
+                <div className="flex items-center gap-2 text-muted-foreground text-sm ml-8">
+                  <MapPin className="w-4 h-4" />
+                  <span>Dhaka, Bangladesh</span>
+                </div>
               </div>
 
               <div className="card-gradient rounded-2xl p-6 border border-border hover:border-primary/40 transition-all duration-500 group hover:-translate-y-1">
                 <div className="flex items-start justify-between gap-4 mb-3">
-                  <h4 className="font-bold text-lg group-hover:text-gradient transition-all">
-                    Higher Secondary Certificate (HSC)
-                  </h4>
+                  <div className="flex items-start gap-3">
+                    <BookOpen className="w-5 h-5 text-muted-foreground mt-1 flex-shrink-0" />
+                    <h4 className="font-bold text-lg group-hover:text-gradient transition-all">
+                      Higher Secondary Certificate (HSC)
+                    </h4>
+                  </div>
                   <span className="px-3 py-1 text-xs font-mono bg-muted text-muted-foreground rounded-full whitespace-nowrap">
                     2013-2015
                   </span>
                 </div>
-                <p className="text-primary font-mono text-sm">
-                  Govt. Hazi Muhammad Mohsin College, Chattogram
+                <p className="text-primary font-mono text-sm mb-2 ml-8">
+                  Govt. Hazi Muhammad Mohsin College
                 </p>
+                <div className="flex items-center gap-2 text-muted-foreground text-sm ml-8">
+                  <MapPin className="w-4 h-4" />
+                  <span>Chattogram, Bangladesh</span>
+                </div>
               </div>
             </div>
           </motion.div>
 
-          {/* Awards */}
+          {/* Certifications & Awards */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.5 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="p-3 rounded-xl bg-accent/10 text-accent">
@@ -149,8 +121,16 @@ const Education = () => {
               </div>
               
               <p className="text-muted-foreground leading-relaxed mb-6">
-                Led a team to develop an innovative solution under tight deadlines, demonstrating strong leadership and rapid prototyping abilities. Competed against 100+ teams nationwide.
+                Led a team of 4 developers to build an innovative solution under tight deadlines. 
+                Competed against 100+ teams nationwide, demonstrating strong leadership, problem-solving, 
+                and rapid prototyping abilities.
               </p>
+
+              <div className="p-4 rounded-xl bg-accent/5 border border-accent/20 mb-6">
+                <p className="text-sm text-accent font-mono">
+                  Top 10 out of 100+ Teams Nationwide
+                </p>
+              </div>
 
               <div className="flex flex-wrap gap-2">
                 <span className="px-3 py-1.5 text-xs font-mono bg-accent/10 text-accent rounded-lg border border-accent/20">

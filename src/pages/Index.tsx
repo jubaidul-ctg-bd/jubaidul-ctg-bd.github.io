@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import Achievements from "@/components/Achievements";
 import Experience from "@/components/Experience";
 import Skills from "@/components/Skills";
 import Education from "@/components/Education";
@@ -12,6 +13,7 @@ const Index = () => {
       <Navbar />
       <main>
         <Hero />
+        <Achievements />
         <Experience />
         <Skills />
         <Education />
