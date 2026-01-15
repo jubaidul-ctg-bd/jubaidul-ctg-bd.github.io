@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { Mail, Phone, MapPin, Send, ArrowUpRight, Copy, Check } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Copy, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useRef, useState } from "react";
 
@@ -15,145 +15,115 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-32 relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 dot-pattern opacity-20" />
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/5 blur-[150px] rounded-full" />
-      
-      <div className="container px-6 relative z-10" ref={containerRef}>
+    <section id="contact" className="section-padding bg-muted/30">
+      <div className="container px-6" ref={containerRef}>
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12"
         >
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <div className="h-px w-16 bg-gradient-to-r from-transparent to-border" />
-            <span className="font-mono text-sm text-primary">04.</span>
-            <div className="h-px w-16 bg-gradient-to-l from-transparent to-border" />
-          </div>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
-            Let's Build Something<br />
-            <span className="text-gradient">Amazing Together</span>
+          <p className="text-sm font-medium text-primary mb-2">Get in Touch</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            Let's Work Together
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground max-w-xl mx-auto">
             I'm always open to discussing new opportunities, interesting projects, 
             or just having a chat about technology.
           </p>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-4xl mx-auto"
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="max-w-2xl mx-auto"
         >
-          <div className="card-gradient rounded-3xl p-8 md:p-12 border border-border shadow-elevated relative overflow-hidden">
-            {/* Decorative elements */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[100px] rounded-full" />
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent/5 blur-[80px] rounded-full" />
-            
-            <div className="relative">
-              {/* Contact cards */}
-              <div className="grid md:grid-cols-3 gap-4 mb-12">
-                {/* Email */}
-                <motion.button
-                  onClick={() => handleCopy("jubaidul.ctg.bd@gmail.com", "email")}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="flex flex-col items-center gap-4 p-6 rounded-2xl bg-muted/30 border border-border hover:border-primary/40 transition-all duration-300 group text-left"
-                >
-                  <div className="p-4 rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-                    <Mail className="w-6 h-6" />
-                  </div>
-                  <div className="text-center">
-                    <span className="text-xs font-mono text-muted-foreground block mb-1">EMAIL</span>
-                    <span className="text-sm font-medium text-foreground break-all">
-                      jubaidul.ctg.bd@gmail.com
-                    </span>
-                  </div>
-                  <span className="flex items-center gap-1 text-xs text-muted-foreground group-hover:text-primary transition-colors">
-                    {copied === "email" ? (
-                      <>
-                        <Check className="w-3 h-3" />
-                        Copied!
-                      </>
-                    ) : (
-                      <>
-                        <Copy className="w-3 h-3" />
-                        Click to copy
-                      </>
-                    )}
-                  </span>
-                </motion.button>
+          <div className="bg-background rounded-lg border border-border p-8">
+            <div className="grid md:grid-cols-3 gap-6 mb-8">
+              {/* Email */}
+              <button
+                onClick={() => handleCopy("jubaidul.ctg.bd@gmail.com", "email")}
+                className="flex flex-col items-center gap-3 p-4 rounded-lg bg-muted/50 hover:bg-muted transition-colors text-center"
+              >
+                <div className="p-3 rounded-lg bg-primary/10 text-primary">
+                  <Mail className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground mb-1">Email</p>
+                  <p className="text-sm font-medium text-foreground break-all">
+                    jubaidul.ctg.bd@gmail.com
+                  </p>
+                </div>
+                <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                  {copied === "email" ? (
+                    <>
+                      <Check className="w-3 h-3 text-green-500" />
+                      Copied!
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3 h-3" />
+                      Click to copy
+                    </>
+                  )}
+                </span>
+              </button>
 
-                {/* Phone */}
-                <motion.button
-                  onClick={() => handleCopy("+8801831645310", "phone")}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="flex flex-col items-center gap-4 p-6 rounded-2xl bg-muted/30 border border-border hover:border-primary/40 transition-all duration-300 group text-left"
-                >
-                  <div className="p-4 rounded-2xl bg-accent/10 text-accent group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
-                    <Phone className="w-6 h-6" />
-                  </div>
-                  <div className="text-center">
-                    <span className="text-xs font-mono text-muted-foreground block mb-1">PHONE</span>
-                    <span className="text-sm font-medium text-foreground">
-                      +880 1831 645310
-                    </span>
-                  </div>
-                  <span className="flex items-center gap-1 text-xs text-muted-foreground group-hover:text-accent transition-colors">
-                    {copied === "phone" ? (
-                      <>
-                        <Check className="w-3 h-3" />
-                        Copied!
-                      </>
-                    ) : (
-                      <>
-                        <Copy className="w-3 h-3" />
-                        Click to copy
-                      </>
-                    )}
-                  </span>
-                </motion.button>
+              {/* Phone */}
+              <button
+                onClick={() => handleCopy("+8801831645310", "phone")}
+                className="flex flex-col items-center gap-3 p-4 rounded-lg bg-muted/50 hover:bg-muted transition-colors text-center"
+              >
+                <div className="p-3 rounded-lg bg-primary/10 text-primary">
+                  <Phone className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground mb-1">Phone</p>
+                  <p className="text-sm font-medium text-foreground">
+                    +880 1831 645310
+                  </p>
+                </div>
+                <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                  {copied === "phone" ? (
+                    <>
+                      <Check className="w-3 h-3 text-green-500" />
+                      Copied!
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3 h-3" />
+                      Click to copy
+                    </>
+                  )}
+                </span>
+              </button>
 
-                {/* Location */}
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  className="flex flex-col items-center gap-4 p-6 rounded-2xl bg-muted/30 border border-border"
-                >
-                  <div className="p-4 rounded-2xl bg-primary/10 text-primary">
-                    <MapPin className="w-6 h-6" />
-                  </div>
-                  <div className="text-center">
-                    <span className="text-xs font-mono text-muted-foreground block mb-1">LOCATION</span>
-                    <span className="text-sm font-medium text-foreground">
-                      Mirpur, Dhaka
-                    </span>
-                    <span className="text-xs text-muted-foreground block">Bangladesh</span>
-                  </div>
-                </motion.div>
+              {/* Location */}
+              <div className="flex flex-col items-center gap-3 p-4 rounded-lg bg-muted/50 text-center">
+                <div className="p-3 rounded-lg bg-primary/10 text-primary">
+                  <MapPin className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground mb-1">Location</p>
+                  <p className="text-sm font-medium text-foreground">
+                    Mirpur, Dhaka
+                  </p>
+                  <p className="text-xs text-muted-foreground">Bangladesh</p>
+                </div>
               </div>
+            </div>
 
-              {/* CTA */}
-              <div className="text-center">
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <Button variant="hero" size="lg" className="group text-lg px-8 py-6" asChild>
-                    <a href="mailto:jubaidul.ctg.bd@gmail.com">
-                      <Send className="w-5 h-5 mr-3 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                      Send me a message
-                      <ArrowUpRight className="w-5 h-5 ml-2 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </a>
-                  </Button>
-                </motion.div>
-                <p className="text-sm text-muted-foreground mt-4">
-                  I typically respond within 24 hours
-                </p>
-              </div>
+            <div className="text-center">
+              <Button size="lg" asChild>
+                <a href="mailto:jubaidul.ctg.bd@gmail.com">
+                  <Send className="w-4 h-4 mr-2" />
+                  Send me an email
+                </a>
+              </Button>
+              <p className="text-xs text-muted-foreground mt-3">
+                I typically respond within 24 hours
+              </p>
             </div>
           </div>
         </motion.div>
