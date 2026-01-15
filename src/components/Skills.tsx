@@ -1,80 +1,83 @@
 import { motion, useInView } from "framer-motion";
-import { Code, Database, Cloud, Wrench, Users, Zap } from "lucide-react";
+import { Code, Database, Cloud, Wrench, Users, Network } from "lucide-react";
 import { useRef, useState } from "react";
 
 const skillCategories = [
   {
     icon: Code,
     title: "Languages & Frameworks",
-    color: "primary",
+    description: "Core technologies for building robust backend systems",
     skills: [
       { name: "Node.js", level: 95 },
-      { name: "TypeScript", level: 90 },
       { name: "Express.js", level: 92 },
-      { name: "NestJS", level: 85 },
+      { name: "NestJS", level: 88 },
       { name: "JavaScript", level: 95 },
-      { name: "Python", level: 70 },
+      { name: "TypeScript", level: 92 },
+      { name: "Python", level: 75 },
+    ],
+  },
+  {
+    icon: Network,
+    title: "Architecture & Protocols",
+    description: "System design and communication patterns",
+    skills: [
+      { name: "Monolithic Architecture", level: 90 },
+      { name: "Microservices", level: 85 },
+      { name: "REST APIs", level: 95 },
+      { name: "WebSockets", level: 88 },
+      { name: "Socket.io", level: 85 },
     ],
   },
   {
     icon: Database,
     title: "Database & ORM",
-    color: "accent",
+    description: "Data management and persistence layers",
     skills: [
-      { name: "PostgreSQL", level: 90 },
-      { name: "MongoDB", level: 88 },
-      { name: "MySQL", level: 85 },
-      { name: "TypeORM", level: 82 },
-      { name: "Sequelize", level: 80 },
+      { name: "MySQL", level: 90 },
+      { name: "PostgreSQL", level: 88 },
+      { name: "MongoDB", level: 85 },
+      { name: "TypeORM", level: 85 },
+      { name: "Sequelize", level: 82 },
       { name: "Mongoose", level: 85 },
     ],
   },
   {
     icon: Cloud,
     title: "DevOps & Cloud",
-    color: "primary",
+    description: "Infrastructure and deployment automation",
     skills: [
       { name: "Docker", level: 88 },
-      { name: "AWS EC2", level: 85 },
-      { name: "CI/CD", level: 82 },
-      { name: "GitHub Actions", level: 80 },
+      { name: "CI/CD Pipelines", level: 85 },
+      { name: "Git", level: 95 },
+      { name: "GitHub Actions", level: 85 },
+      { name: "Load Balancing", level: 82 },
+      { name: "System Monitoring", level: 80 },
       { name: "Nginx", level: 85 },
-      { name: "Linux", level: 80 },
+      { name: "AWS EC2", level: 85 },
     ],
   },
   {
     icon: Wrench,
-    title: "Tools & APIs",
-    color: "accent",
+    title: "Tools & Methodologies",
+    description: "Development workflow and collaboration",
     skills: [
-      { name: "REST APIs", level: 95 },
-      { name: "WebSockets", level: 85 },
-      { name: "Microservices", level: 80 },
-      { name: "Git", level: 92 },
-      { name: "Redis", level: 78 },
-      { name: "Agile/Scrum", level: 88 },
+      { name: "GitHub", level: 95 },
+      { name: "Postman", level: 92 },
+      { name: "Jira", level: 88 },
+      { name: "Confluence", level: 85 },
+      { name: "Agile/Scrum", level: 90 },
     ],
   },
   {
     icon: Users,
-    title: "Leadership",
-    color: "primary",
+    title: "Leadership & Soft Skills",
+    description: "Team collaboration and mentorship",
     skills: [
-      { name: "Team Leadership", level: 90 },
-      { name: "Technical Mentoring", level: 88 },
-      { name: "Code Review", level: 92 },
+      { name: "Team Leadership", level: 92 },
+      { name: "Technical Mentoring", level: 90 },
+      { name: "Strategic Planning", level: 85 },
       { name: "Problem Solving", level: 95 },
-    ],
-  },
-  {
-    icon: Zap,
-    title: "Architecture",
-    color: "accent",
-    skills: [
-      { name: "System Design", level: 85 },
-      { name: "Clean Code", level: 90 },
-      { name: "API Design", level: 92 },
-      { name: "Scalability", level: 85 },
+      { name: "Cross-functional Collaboration", level: 90 },
     ],
   },
 ];
@@ -98,14 +101,15 @@ const Skills = () => {
           className="mb-20"
         >
           <div className="flex items-center gap-4 mb-4">
-            <span className="font-mono text-sm text-primary">02.</span>
+            <span className="font-mono text-sm text-primary tracking-wider">02</span>
             <h2 className="text-4xl md:text-6xl font-bold">
-              Skills<span className="text-primary">.</span>
+              Core Skills<span className="text-primary">.</span>
             </h2>
             <div className="h-px flex-1 max-w-xs bg-gradient-to-r from-border to-transparent" />
           </div>
-          <p className="text-muted-foreground text-lg max-w-xl">
-            A comprehensive toolkit for building robust, scalable backend systems.
+          <p className="text-muted-foreground text-lg max-w-2xl">
+            A comprehensive toolkit built over 5+ years for developing robust, scalable backend applications 
+            with a focus on clean architecture and high performance.
           </p>
         </motion.div>
 
@@ -120,19 +124,18 @@ const Skills = () => {
             >
               <div className="h-full card-gradient rounded-2xl p-6 border border-border hover:border-primary/40 transition-all duration-500 hover:shadow-elevated hover:-translate-y-2">
                 {/* Header */}
-                <div className="flex items-center gap-4 mb-6">
-                  <div className={`p-3 rounded-xl ${
-                    category.color === 'primary' 
-                      ? 'bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground' 
-                      : 'bg-accent/10 text-accent group-hover:bg-accent group-hover:text-accent-foreground'
-                  } transition-all duration-300`}>
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 flex-shrink-0">
                     <category.icon className="w-6 h-6" />
                   </div>
-                  <h3 className="font-bold text-lg">{category.title}</h3>
+                  <div>
+                    <h3 className="font-bold text-lg mb-1">{category.title}</h3>
+                    <p className="text-xs text-muted-foreground">{category.description}</p>
+                  </div>
                 </div>
 
                 {/* Skills with progress */}
-                <div className="space-y-4">
+                <div className="space-y-3">
                   {category.skills.map((skill, i) => (
                     <div
                       key={i}
@@ -155,11 +158,7 @@ const Skills = () => {
                           initial={{ width: 0 }}
                           animate={isInView ? { width: `${skill.level}%` } : {}}
                           transition={{ duration: 1, delay: index * 0.1 + i * 0.05, ease: "easeOut" }}
-                          className={`h-full rounded-full ${
-                            category.color === 'primary'
-                              ? 'bg-gradient-to-r from-primary to-primary/60'
-                              : 'bg-gradient-to-r from-accent to-accent/60'
-                          }`}
+                          className="h-full rounded-full bg-gradient-to-r from-primary to-primary/60"
                         />
                       </div>
                     </div>

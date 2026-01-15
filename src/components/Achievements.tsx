@@ -1,31 +1,28 @@
 import { motion, useInView } from "framer-motion";
-import { Trophy, Users, Server, Rocket, Target, Award, Star, Zap } from "lucide-react";
+import { Trophy, Users, Server, Rocket, Target, Award, Code2, Medal, Zap } from "lucide-react";
 import { useRef, useEffect, useState } from "react";
 
-const achievements = [
+const impactStats = [
   {
     icon: Users,
     value: 2000000,
     suffix: "+",
     label: "Patients Served",
-    description: "Healthcare platform users across Bangladesh",
-    color: "primary",
+    description: "Healthcare platform registered users",
   },
   {
     icon: Server,
     value: 50000,
     suffix: "+",
     label: "Daily Transactions",
-    description: "eTicketing system processing capacity",
-    color: "accent",
+    description: "eTicketing system processing",
   },
   {
     icon: Rocket,
     value: 5,
     suffix: "+",
     label: "Years Experience",
-    description: "Building scalable backend systems",
-    color: "primary",
+    description: "Building scalable systems",
   },
   {
     icon: Target,
@@ -33,33 +30,62 @@ const achievements = [
     suffix: "%",
     label: "System Uptime",
     description: "High-availability infrastructure",
-    color: "accent",
   },
 ];
 
-const highlights = [
+const programmingContests = [
+  {
+    position: "Champion",
+    event: "IUBAT Intra University Programming Contest",
+    year: "Feb 2020",
+    highlight: true,
+  },
+  {
+    position: "9th Place",
+    event: "UITS Inter University Programming Contest",
+    year: "Jan 2019",
+    highlight: false,
+  },
+  {
+    position: "Champion",
+    event: "JU CSE FEST ICT Olympiad",
+    year: "Jan 2019",
+    highlight: true,
+  },
+  {
+    position: "9th Place",
+    event: "IUB Inter University Programming Contest",
+    year: "Jan 2018",
+    highlight: false,
+  },
+  {
+    position: "3rd Place",
+    event: "IUBAT Intra University Programming Contest",
+    year: "Nov 2017",
+    highlight: false,
+  },
+];
+
+const careerHighlights = [
   {
     icon: Trophy,
     title: "National Hackathon Semi-Finalist",
-    subtitle: "Top 10 out of 100+ Teams",
-    description: "Led team to develop innovative solution under tight deadlines, demonstrating exceptional leadership and rapid prototyping abilities.",
-    year: "2024",
-    tags: ["Team Leadership", "Innovation", "Rapid Prototyping"],
+    subtitle: "2024 • Team Lead",
+    description: "Led a team of 4 developers to build an innovative solution. Top 10 out of 100+ teams nationwide.",
+    tags: ["Innovation", "Team Leadership", "Rapid Prototyping"],
   },
   {
     icon: Award,
     title: "Led Cross-Functional Engineering Team",
-    subtitle: "Jatri Services Limited",
+    subtitle: "Jatri Services Limited • 2022-2024",
     description: "Managed 8+ engineers developing Bangladesh's leading public transportation eTicketing platform.",
-    year: "2022-2024",
-    tags: ["Engineering Leadership", "Team Management", "Mentorship"],
+    tags: ["Engineering Leadership", "Mentorship", "Architecture"],
   },
   {
-    icon: Star,
+    icon: Medal,
     title: "Architected Healthcare Platform",
-    subtitle: "2M+ Registered Users",
-    description: "Designed and built secure, high-performing APIs for patient care serving millions across the healthcare sector.",
-    year: "2024-2025",
+    subtitle: "Grameen HealthTech • 2024-2025",
+    description: "Designed secure, high-performing APIs for patient care serving 2M+ registered users nationwide.",
     tags: ["System Design", "Healthcare Tech", "Scalability"],
   },
 ];
@@ -126,6 +152,12 @@ const Achievements = () => {
             <span className="text-sm font-mono text-primary">Impact & Recognition</span>
           </motion.div>
           
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <div className="h-px flex-1 max-w-xs bg-gradient-to-l from-border to-transparent" />
+            <span className="font-mono text-sm text-primary tracking-wider">03</span>
+            <div className="h-px flex-1 max-w-xs bg-gradient-to-r from-border to-transparent" />
+          </div>
+          
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
             <span className="text-foreground">Proven </span>
             <span className="text-gradient">Results</span>
@@ -138,7 +170,7 @@ const Achievements = () => {
 
         {/* Stats Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-20 max-w-6xl mx-auto">
-          {achievements.map((stat, index) => (
+          {impactStats.map((stat, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
@@ -147,23 +179,14 @@ const Achievements = () => {
               className="group"
             >
               <div className="relative h-full">
-                {/* Glow effect */}
-                <div className={`absolute inset-0 rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500 ${
-                  stat.color === 'primary' ? 'bg-primary' : 'bg-accent'
-                }`} />
+                <div className="absolute inset-0 rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500 bg-primary" />
                 
                 <div className="relative card-gradient rounded-2xl p-6 md:p-8 border border-border hover:border-primary/40 transition-all duration-500 h-full">
-                  <div className={`inline-flex p-3 rounded-xl mb-4 ${
-                    stat.color === 'primary' ? 'bg-primary/10' : 'bg-accent/10'
-                  }`}>
-                    <stat.icon className={`w-6 h-6 ${
-                      stat.color === 'primary' ? 'text-primary' : 'text-accent'
-                    }`} />
+                  <div className="inline-flex p-3 rounded-xl mb-4 bg-primary/10">
+                    <stat.icon className="w-6 h-6 text-primary" />
                   </div>
                   
-                  <p className={`text-4xl md:text-5xl font-bold mb-2 ${
-                    stat.color === 'primary' ? 'text-gradient' : 'text-gradient-accent'
-                  }`}>
+                  <p className="text-4xl md:text-5xl font-bold mb-2 text-gradient">
                     <AnimatedCounter value={stat.value} suffix={stat.suffix} inView={isInView} />
                   </p>
                   
@@ -175,8 +198,8 @@ const Achievements = () => {
           ))}
         </div>
 
-        {/* Highlights */}
-        <div className="max-w-5xl mx-auto">
+        {/* Career Highlights */}
+        <div className="max-w-5xl mx-auto mb-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -184,12 +207,12 @@ const Achievements = () => {
             className="flex items-center gap-4 mb-10"
           >
             <Trophy className="w-6 h-6 text-primary" />
-            <h3 className="text-2xl md:text-3xl font-bold">Key Achievements</h3>
+            <h3 className="text-2xl md:text-3xl font-bold">Career Highlights</h3>
             <div className="h-px flex-1 bg-gradient-to-r from-border to-transparent" />
           </motion.div>
 
           <div className="space-y-6">
-            {highlights.map((item, index) => (
+            {careerHighlights.map((item, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, x: -30 }}
@@ -198,12 +221,10 @@ const Achievements = () => {
                 className="group"
               >
                 <div className="relative">
-                  {/* Background glow on hover */}
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
                   <div className="relative card-gradient rounded-2xl p-6 md:p-8 border border-border hover:border-primary/40 transition-all duration-500 group-hover:-translate-y-1">
                     <div className="flex flex-col md:flex-row md:items-start gap-6">
-                      {/* Icon */}
                       <div className="flex-shrink-0">
                         <motion.div
                           whileHover={{ rotate: 10, scale: 1.1 }}
@@ -213,19 +234,11 @@ const Achievements = () => {
                         </motion.div>
                       </div>
                       
-                      {/* Content */}
                       <div className="flex-1">
-                        <div className="flex flex-wrap items-start justify-between gap-4 mb-3">
-                          <div>
-                            <h4 className="text-xl md:text-2xl font-bold text-foreground group-hover:text-gradient transition-all duration-300">
-                              {item.title}
-                            </h4>
-                            <p className="text-primary font-mono text-sm mt-1">{item.subtitle}</p>
-                          </div>
-                          <span className="px-4 py-1.5 text-sm font-mono bg-muted text-muted-foreground rounded-full border border-border">
-                            {item.year}
-                          </span>
-                        </div>
+                        <h4 className="text-xl md:text-2xl font-bold text-foreground group-hover:text-gradient transition-all duration-300">
+                          {item.title}
+                        </h4>
+                        <p className="text-primary font-mono text-sm mt-1 mb-3">{item.subtitle}</p>
                         
                         <p className="text-muted-foreground leading-relaxed mb-4">
                           {item.description}
@@ -244,6 +257,52 @@ const Achievements = () => {
                       </div>
                     </div>
                   </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Programming Contests */}
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="flex items-center gap-4 mb-10"
+          >
+            <Code2 className="w-6 h-6 text-accent" />
+            <h3 className="text-2xl md:text-3xl font-bold">Programming Contests</h3>
+            <div className="h-px flex-1 bg-gradient-to-r from-border to-transparent" />
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {programmingContests.map((contest, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
+                className="group"
+              >
+                <div className={`card-gradient rounded-xl p-5 border transition-all duration-300 hover:-translate-y-1 ${
+                  contest.highlight 
+                    ? 'border-primary/40 hover:border-primary' 
+                    : 'border-border hover:border-primary/40'
+                }`}>
+                  <div className="flex items-start justify-between gap-3 mb-3">
+                    <span className={`px-3 py-1 text-xs font-mono font-semibold rounded-full ${
+                      contest.highlight 
+                        ? 'bg-primary/20 text-primary border border-primary/30' 
+                        : 'bg-muted text-muted-foreground'
+                    }`}>
+                      {contest.position}
+                    </span>
+                    <span className="text-xs font-mono text-muted-foreground">{contest.year}</span>
+                  </div>
+                  <p className="text-sm font-medium text-foreground leading-snug">
+                    {contest.event}
+                  </p>
                 </div>
               </motion.div>
             ))}

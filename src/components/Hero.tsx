@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowDown, Github, Linkedin, Mail, Download, MapPin, Calendar } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, Download, MapPin, Phone, Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useRef } from "react";
 
@@ -92,14 +92,15 @@ const Hero = () => {
                 transition={{ delay: 0.6, duration: 0.8 }}
                 className="text-lg text-muted-foreground max-w-xl mb-8 leading-relaxed"
               >
-                5+ years crafting <span className="text-foreground font-medium">scalable backend systems</span> and{" "}
-                <span className="text-foreground font-medium">high-performance APIs</span>. Specialized in{" "}
-                <span className="text-primary">Node.js</span>,{" "}
-                <span className="text-primary">TypeScript</span>, and{" "}
-                <span className="text-primary">cloud architecture</span>.
+                Senior backend engineering professional with extensive expertise in developing{" "}
+                <span className="text-foreground font-medium">robust, scalable applications</span>. 
+                Focused on teamwork, guiding projects to success, and adapting to evolving requirements. 
+                Skilled in <span className="text-primary">Node.js</span>,{" "}
+                <span className="text-primary">TypeScript</span>,{" "}
+                <span className="text-primary">NestJS</span>, and cloud architecture.
               </motion.p>
 
-              {/* Location & Experience */}
+              {/* Contact Info */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -108,10 +109,14 @@ const Hero = () => {
               >
                 <span className="flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-primary" />
-                  Dhaka, Bangladesh
+                  Mirpur, Dhaka, Bangladesh
                 </span>
                 <span className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4 text-primary" />
+                  <Phone className="w-4 h-4 text-primary" />
+                  +880 1831 645310
+                </span>
+                <span className="flex items-center gap-2">
+                  <Briefcase className="w-4 h-4 text-primary" />
                   5+ Years Experience
                 </span>
               </motion.div>
@@ -163,7 +168,7 @@ const Hero = () => {
                   <Linkedin className="w-5 h-5 group-hover:scale-110 transition-transform" />
                 </a>
                 <a
-                  href="mailto:jubaer7521@gmail.com"
+                  href="mailto:jubaidul.ctg.bd@gmail.com"
                   className="p-3 rounded-xl glass-effect border border-border hover:border-primary/50 hover:text-primary transition-all group"
                 >
                   <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
@@ -212,6 +217,14 @@ const Hero = () => {
                           <span className="text-xs text-muted-foreground">uptime</span>
                         </div>
                         <p className="text-sm text-muted-foreground">System Availability</p>
+                      </div>
+
+                      <div className="group">
+                        <div className="flex items-baseline justify-between mb-1">
+                          <span className="text-4xl font-bold text-gradient-accent">4</span>
+                          <span className="text-xs text-muted-foreground">companies</span>
+                        </div>
+                        <p className="text-sm text-muted-foreground">Professional Experience</p>
                       </div>
                     </div>
                   </div>
