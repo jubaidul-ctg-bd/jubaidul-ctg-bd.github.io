@@ -6,6 +6,7 @@ const experiences = [
   {
     title: "Senior Backend Engineer",
     company: "Pullsight.ai",
+    companyUrl: "https://pullsight.ai/",
     location: "Bulgaria (Remote)",
     period: "Jul 2025 - Present",
     description: [
@@ -19,6 +20,7 @@ const experiences = [
   {
     title: "Senior Software Engineer",
     company: "Grameen HealthTech Limited",
+    companyUrl: "https://ghl.healthcare/",
     location: "Dhaka, Bangladesh",
     period: "Sep 2024 - Oct 2025",
     description: [
@@ -32,6 +34,7 @@ const experiences = [
   {
     title: "Lead Software Engineer",
     company: "Jatri Services Limited",
+    companyUrl: "https://jatri.co/",
     location: "Dhaka, Bangladesh",
     period: "Jan 2022 - Aug 2024",
     description: [
@@ -45,6 +48,7 @@ const experiences = [
   {
     title: "Software Engineer",
     company: "Shafa Care Ltd.",
+    companyUrl: "https://shafa.care/",
     location: "Dhaka, Bangladesh",
     period: "Sep 2020 - Dec 2021",
     description: [
@@ -125,10 +129,15 @@ const Experience = () => {
                           </span>
                         )}
                       </div>
-                      <p className="text-primary font-semibold flex items-center gap-2">
+                      <a 
+                        href={exp.companyUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-primary font-semibold flex items-center gap-2 hover:underline"
+                      >
                         {exp.company}
                         <ExternalLink className="w-3 h-3" />
-                      </p>
+                      </a>
                     </div>
                     <div className="text-right text-sm text-muted-foreground space-y-1">
                       <p className="flex items-center justify-end gap-1">
