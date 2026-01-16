@@ -98,7 +98,7 @@ const Hero = () => {
                   </a>
                 </Button>
                 <Button variant="outline" size="lg" className="hover:bg-secondary" asChild>
-                  <a href="#" download>
+                  <a href="https://drive.google.com/file/d/1a_AjjZ3OXr9DL1FB0QF4Y_AOu4gMNoyW/view?usp=sharing" target="_blank" rel="noopener noreferrer">
                     <Download className="w-4 h-4 mr-2" />
                     Download CV
                   </a>
@@ -114,8 +114,8 @@ const Hero = () => {
               >
                 <span className="text-sm text-muted-foreground">Connect:</span>
                 {[
-                  { icon: Github, href: "https://github.com", label: "GitHub" },
-                  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+                  { icon: Github, href: "https://github.com/jubaidul-ctg-bd", label: "GitHub" },
+                  { icon: Linkedin, href: "https://www.linkedin.com/in/md-jubaidul-alam-06a119118/", label: "LinkedIn" },
                   { icon: Mail, href: "mailto:jubaidul.ctg.bd@gmail.com", label: "Email" },
                 ].map((social) => (
                   <a
