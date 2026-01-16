@@ -114,7 +114,7 @@ const Contact = () => {
             {/* CTA */}
             <div className="text-center">
               <Button size="lg" className="shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all group" asChild>
-                <a href="mailto:jubaidul.ctg.bd@gmail.com">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jubaidul.ctg.bd@gmail.com" target="_blank" rel="noopener noreferrer">
                   <Send className="w-4 h-4 mr-2 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   Send me an email
                   <ArrowUpRight className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 transition-opacity" />
