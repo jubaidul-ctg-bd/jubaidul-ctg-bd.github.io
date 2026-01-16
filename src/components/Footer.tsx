@@ -22,13 +22,13 @@ const Footer = () => {
             {[
               { icon: Github, href: "https://github.com/jubaidul-ctg-bd", label: "GitHub" },
               { icon: Linkedin, href: "https://www.linkedin.com/in/md-jubaidul-alam-06a119118/", label: "LinkedIn" },
-              { icon: Mail, href: "mailto:jubaidul.ctg.bd@gmail.com", label: "Email" },
+              { icon: Mail, href: "https://mail.google.com/mail/?view=cm&fs=1&to=jubaidul.ctg.bd@gmail.com", label: "Email" },
             ].map((social) => (
               <a
                 key={social.label}
                 href={social.href}
-                target={social.label !== "Email" ? "_blank" : undefined}
-                rel={social.label !== "Email" ? "noopener noreferrer" : undefined}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2.5 rounded-xl text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
               >
                 <social.icon className="w-5 h-5" />
