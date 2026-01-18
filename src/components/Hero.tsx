@@ -3,7 +3,7 @@ import { ArrowDown, Github, Linkedin, Mail, Download, MapPin, Sparkles } from "l
 import { Button } from "@/components/ui/button";
 
 const stats = [
-  { value: "5+", label: "Years Experience" },
+  { value: "6+", label: "Years Experience" },
   { value: "2M+", label: "Users Served" },
   { value: "4", label: "Companies" },
   { value: "50K+", label: "Daily Transactions" },
@@ -77,11 +77,11 @@ const Hero = () => {
                 transition={{ duration: 0.6, delay: 0.25 }}
                 className="text-lg text-muted-foreground max-w-xl mb-8 leading-relaxed"
               >
-                Crafting robust, scalable backend systems for 5+ years. Specialized in 
+                Senior Backend Engineer with 6 years of experience designing and scaling high-performance backend systems. Specialized in
                 <span className="text-foreground font-medium"> Node.js</span>,
                 <span className="text-foreground font-medium"> TypeScript</span>, and
-                <span className="text-foreground font-medium"> cloud architecture</span>. 
-                Building systems that serve millions.
+                <span className="text-foreground font-medium"> cloud-native architectures</span>. 
+                Proven track record of building reliable systems that serve millions of users.
               </motion.p>
 
               {/* CTA Buttons */}
