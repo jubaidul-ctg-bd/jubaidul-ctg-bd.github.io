@@ -1,16 +1,16 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Github, Linkedin, Mail, Download, MapPin, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import profileImage from "@/assets/profile.jpeg";
+import profileImage from "@/assets/profile-nobg.png";
 
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       <div className="container px-6 py-20 relative z-10">
-        <div className="max-w-5xl mx-auto">
-          <div className="grid lg:grid-cols-[1fr,380px] gap-12 lg:gap-16 items-center">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-0 items-end">
             {/* Left content */}
-            <div>
+            <div className="relative z-10 pb-8 lg:pb-16">
               {/* Status badge */}
               <motion.div
                 initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
@@ -61,15 +61,13 @@ const Hero = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.25 }}
-                className="text-lg text-muted-foreground max-w-xl mb-8 leading-relaxed"
+                className="text-lg text-muted-foreground max-w-lg mb-8 leading-relaxed"
               >
-                Senior Full-Stack Software Engineer with 6+ years of experience building and scaling production-grade web applications used by millions of users. Expert in
+                6+ years of experience building and scaling production-grade web applications used by millions. Expert in
                 <span className="text-foreground font-medium"> Node.js</span>,
-                <span className="text-foreground font-medium"> NestJS</span>,
                 <span className="text-foreground font-medium"> TypeScript</span>,
-                <span className="text-foreground font-medium"> React</span>, and
-                <span className="text-foreground font-medium"> cloud-native architectures</span>. 
-                Proven track record delivering high-performance platforms in healthcare, transportation, and AI-driven products.
+                <span className="text-foreground font-medium"> React</span> &
+                <span className="text-foreground font-medium"> cloud-native architectures</span>.
               </motion.p>
 
               {/* CTA Buttons */}
@@ -126,55 +124,30 @@ const Hero = () => {
 
             {/* Right - Profile Image */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.3, type: "spring", stiffness: 100 }}
-              className="hidden lg:flex justify-center"
+              initial={{ opacity: 0, y: 60 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.2, type: "spring", stiffness: 60 }}
+              className="relative flex justify-center lg:justify-end items-end"
             >
+              {/* Gradient backdrop behind image */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 lg:left-auto lg:translate-x-0 lg:right-8 w-80 h-80 rounded-full bg-primary/15 blur-3xl" />
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 lg:left-auto lg:translate-x-0 lg:right-20 w-60 h-60 rounded-full bg-accent/10 blur-2xl" />
+              
+              {/* Image container */}
               <div className="relative">
-                {/* Glow ring */}
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  className="absolute -inset-3 rounded-full bg-gradient-to-tr from-primary via-accent to-primary opacity-20 blur-sm"
-                />
-                <motion.div
-                  whileHover={{ scale: 1.03 }}
+                {/* Bottom gradient fade */}
+                <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-background to-transparent z-10" />
+                
+                <motion.img
+                  src={profileImage}
+                  alt="Md. Jubaidul Alam"
+                  className="relative z-[1] w-[320px] md:w-[400px] lg:w-[440px] h-auto object-contain drop-shadow-2xl"
+                  whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 200 }}
-                  className="relative w-72 h-72 rounded-full overflow-hidden border-2 border-primary/30 shadow-2xl shadow-primary/10"
-                >
-                  <img
-                    src={profileImage}
-                    alt="Md. Jubaidul Alam"
-                    className="w-full h-full object-cover object-top"
-                  />
-                </motion.div>
+                />
               </div>
             </motion.div>
           </div>
-
-          {/* Mobile profile image */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex justify-center mt-12 lg:hidden"
-          >
-            <div className="relative">
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute -inset-2 rounded-full bg-gradient-to-tr from-primary via-accent to-primary opacity-20 blur-sm"
-              />
-              <div className="relative w-48 h-48 rounded-full overflow-hidden border-2 border-primary/30 shadow-xl shadow-primary/10">
-                <img
-                  src={profileImage}
-                  alt="Md. Jubaidul Alam"
-                  className="w-full h-full object-cover object-top"
-                />
-              </div>
-            </div>
-          </motion.div>
         </div>
 
         {/* Scroll indicator */}
