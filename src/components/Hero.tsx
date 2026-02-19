@@ -108,7 +108,7 @@ const Hero = () => {
                   </a>
                 </Button>
                 <Button variant="outline" size="lg" className="hover:bg-secondary" asChild>
-                  <a href="https://drive.google.com/file/d/1a_AjjZ3OXr9DL1FB0QF4Y_AOu4gMNoyW/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                  <a href="/MD_JUBAIDUL_ALAM_Resume.pdf" download>
                     <Download className="w-4 h-4 mr-2" />
                     Download CV
                   </a>
