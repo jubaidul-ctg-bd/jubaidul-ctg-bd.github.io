@@ -7,37 +7,37 @@ const skillCategories = [
     icon: Code,
     title: "Languages & Frameworks",
     color: "from-blue-500 to-cyan-500",
-    skills: ["Node.js", "Express.js", "NestJS", "JavaScript", "TypeScript", "Python"],
+    skills: ["Node.js", "Express.js", "NestJS", "JavaScript", "TypeScript", "React", "Next.js", "Python"],
   },
   {
     icon: Network,
-    title: "Architecture & APIs",
+    title: "Architecture & Protocols",
     color: "from-purple-500 to-pink-500",
-    skills: ["REST APIs", "Microservices", "Monolithic", "WebSockets", "Socket.io"],
+    skills: ["Monolithic & Modular", "Microservices", "REST APIs", "WebSockets", "Socket.io", "RabbitMQ", "Kafka", "BullMQ"],
   },
   {
     icon: Database,
-    title: "Databases",
+    title: "Database & ORM",
     color: "from-green-500 to-emerald-500",
-    skills: ["MySQL", "PostgreSQL", "MongoDB", "Redis", "TypeORM", "Sequelize"],
+    skills: ["MySQL", "PostgreSQL", "MongoDB", "Redis", "TypeORM", "Sequelize", "Mongoose"],
   },
   {
     icon: Cloud,
     title: "DevOps & Cloud",
     color: "from-orange-500 to-amber-500",
-    skills: ["Docker", "AWS EC2", "Nginx", "CI/CD", "GitHub Actions"],
+    skills: ["Docker", "CI/CD Pipelines", "GitHub Actions", "Nginx", "AWS EC2", "AWS RDS", "AWS S3", "Route 53", "Load Balancing"],
   },
   {
     icon: Wrench,
-    title: "Tools & Workflow",
+    title: "Tools & Methodologies",
     color: "from-rose-500 to-red-500",
-    skills: ["Git", "GitHub", "Postman", "Jira", "Confluence", "Agile"],
+    skills: ["Git", "GitHub", "Postman", "Jira", "Confluence", "Agile/Scrum", "Jest Testing"],
   },
   {
     icon: Users,
-    title: "Leadership",
+    title: "Leadership & Soft Skills",
     color: "from-indigo-500 to-violet-500",
-    skills: ["Team Leadership", "Mentoring", "Code Review", "Planning"],
+    skills: ["Team Leadership", "Technical Mentoring", "Strategic Planning", "Problem Solving", "Cross-functional Collaboration"],
   },
 ];
 
@@ -62,7 +62,7 @@ const Skills = () => {
             Skills & Technologies
           </h2>
           <p className="text-lg text-muted-foreground">
-            A comprehensive toolkit built over 5+ years for developing robust, scalable backend applications.
+            A comprehensive toolkit built over 6+ years for developing robust, scalable full-stack applications.
           </p>
         </motion.div>
 
@@ -70,9 +70,10 @@ const Skills = () => {
           {skillCategories.map((category, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+              transition={{ duration: 0.5, delay: index * 0.1, type: "spring", stiffness: 120 }}
+              whileHover={{ y: -6 }}
               className="group"
             >
               <div className="card-premium p-6 h-full">
@@ -87,12 +88,15 @@ const Skills = () => {
                 
                 <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill, i) => (
-                    <span
+                    <motion.span
                       key={i}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                      transition={{ duration: 0.3, delay: index * 0.1 + i * 0.03 + 0.3 }}
                       className="px-3 py-1.5 text-sm bg-secondary text-muted-foreground rounded-lg hover:bg-primary hover:text-primary-foreground transition-all duration-300 cursor-default"
                     >
                       {skill}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
               </div>
