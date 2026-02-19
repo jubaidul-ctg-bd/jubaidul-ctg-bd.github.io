@@ -65,12 +65,15 @@ const Contact = () => {
           <div className="card-premium p-8 md:p-12">
             {/* Contact cards */}
             <div className="grid md:grid-cols-3 gap-4 mb-10">
-              {contactMethods.map((method) => (
+              {contactMethods.map((method, i) => (
                 <motion.button
                   key={method.copyKey}
                   onClick={() => handleCopy(method.value, method.copyKey)}
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ scale: 1.03, y: -2 }}
                   whileTap={{ scale: 0.98 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.2 + i * 0.1 }}
                   className="flex flex-col items-center gap-3 p-6 rounded-xl bg-secondary/50 hover:bg-secondary transition-all text-center group"
                 >
                   <div className="p-3 rounded-xl bg-gradient-to-br from-primary to-accent text-white shadow-lg">
@@ -99,20 +102,30 @@ const Contact = () => {
               ))}
 
               {/* Location - not copyable */}
-              <div className="flex flex-col items-center gap-3 p-6 rounded-xl bg-secondary/50 text-center">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.4 }}
+                className="flex flex-col items-center gap-3 p-6 rounded-xl bg-secondary/50 text-center"
+              >
                 <div className="p-3 rounded-xl bg-gradient-to-br from-primary to-accent text-white shadow-lg">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
                   <p className="text-xs text-muted-foreground mb-1">Location</p>
                   <p className="text-sm font-semibold text-foreground">Mirpur, Dhaka</p>
-                  <p className="text-xs text-muted-foreground">Bangladesh</p>
+                  <p className="text-xs text-muted-foreground">Bangladesh, 1216</p>
                 </div>
-              </div>
+              </motion.div>
             </div>
 
             {/* CTA */}
-            <div className="text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.5 }}
+              className="text-center"
+            >
               <Button size="lg" className="shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all group" asChild>
                 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jubaidul.ctg.bd@gmail.com" target="_blank" rel="noopener noreferrer">
                   <Send className="w-4 h-4 mr-2 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -123,7 +136,7 @@ const Contact = () => {
               <p className="text-sm text-muted-foreground mt-4">
                 I typically respond within 24 hours
               </p>
-            </div>
+            </motion.div>
           </div>
         </motion.div>
       </div>
