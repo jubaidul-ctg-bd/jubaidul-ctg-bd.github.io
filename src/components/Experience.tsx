@@ -1,5 +1,5 @@
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import { Briefcase, MapPin, Calendar, ExternalLink, ArrowRight } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { Briefcase, MapPin, Calendar, ExternalLink } from "lucide-react";
 import { useRef } from "react";
 
 const experiences = [
@@ -47,6 +47,7 @@ const experiences = [
       "Collaborated with product and design teams to define technical requirements and delivery timelines.",
       "Managed server infrastructure on AWS EC2 with Nginx for load balancing and reverse proxy configuration.",
       "Mentored junior developers through code reviews, pair programming, and technical documentation.",
+      "Analyzed system performance metrics, identifying areas for improvement and driving optimization efforts.",
     ],
     tech: ["Express.js", "MySQL", "Docker", "Nginx", "AWS EC2"],
     current: false,
@@ -69,153 +70,138 @@ const experiences = [
   },
 ];
 
-const ExperienceCard = ({ exp, index, isInView }: { exp: typeof experiences[0]; index: number; isInView: boolean }) => {
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  return (
-    <motion.div
-      ref={cardRef}
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.12, ease: [0.25, 0.1, 0, 1] }}
-      className="group relative"
-    >
-      {/* Connector line for non-last items */}
-      {index < experiences.length - 1 && (
-        <div className="absolute left-6 top-14 bottom-0 w-px bg-gradient-to-b from-primary/30 to-transparent hidden md:block" />
-      )}
-
-      <div className="relative rounded-2xl border border-border bg-card/50 backdrop-blur-sm p-6 md:p-8 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 overflow-hidden">
-        {/* Hover gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.02] to-accent/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        
-        {/* Top row */}
-        <div className="relative flex flex-wrap items-start justify-between gap-4 mb-5">
-          <div className="flex items-start gap-4">
-            {/* Number badge */}
-            <div className={`flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center text-sm font-bold ${
-              exp.current
-                ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/30'
-                : 'bg-secondary text-muted-foreground'
-            }`}>
-              {String(index + 1).padStart(2, '0')}
-            </div>
-            <div>
-              <div className="flex items-center gap-3 mb-1">
-                <h3 className="text-lg md:text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
-                  {exp.title}
-                </h3>
-                {exp.current && (
-                  <motion.span
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 0.5, type: "spring" }}
-                    className="px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-primary text-primary-foreground rounded-full"
-                  >
-                    Current
-                  </motion.span>
-                )}
-              </div>
-              <a
-                href={exp.companyUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-primary font-semibold hover:underline text-sm"
-              >
-                {exp.company}
-                <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
-              </a>
-            </div>
-          </div>
-
-          <div className="flex flex-col items-end gap-1 text-xs text-muted-foreground">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary">
-              <Calendar className="w-3 h-3" />
-              {exp.period}
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary">
-              <MapPin className="w-3 h-3" />
-              {exp.location}
-            </span>
-          </div>
-        </div>
-
-        {/* Description */}
-        <ul className="relative space-y-2.5 mb-6 ml-16 md:ml-16">
-          {exp.description.map((item, i) => (
-            <motion.li
-              key={i}
-              initial={{ opacity: 0, x: -10 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.4, delay: index * 0.12 + i * 0.05 + 0.2 }}
-              className="flex items-start gap-3 text-sm text-muted-foreground leading-relaxed"
-            >
-              <span className="w-1 h-1 rounded-full bg-primary mt-2 flex-shrink-0" />
-              <span className="group-hover:text-foreground/80 transition-colors duration-300">{item}</span>
-            </motion.li>
-          ))}
-        </ul>
-
-        {/* Tech stack */}
-        <div className="relative flex flex-wrap gap-2 ml-16 md:ml-16">
-          {exp.tech.map((tech, i) => (
-            <span
-              key={i}
-              className="px-3 py-1 text-xs font-medium bg-secondary/80 text-muted-foreground rounded-full border border-border/50 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300 cursor-default"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
 const Experience = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-50px" });
+  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
 
   return (
     <section id="experience" className="section-padding relative overflow-hidden">
-      {/* Subtle background */}
-      <div className="absolute inset-0 opacity-[0.02]" style={{
-        backgroundImage: `radial-gradient(hsl(var(--primary)) 1px, transparent 1px)`,
-        backgroundSize: '32px 32px',
-      }} />
-
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-subtle" />
+      <div className="absolute inset-0 pattern-dots" />
+      
       <div className="container px-6 relative z-10" ref={containerRef}>
-        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="max-w-2xl mb-16"
         >
-          <motion.div
-            initial={{ width: 0 }}
-            animate={isInView ? { width: "3rem" } : {}}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="h-1 bg-primary rounded-full mb-6"
-          />
-          <div className="flex items-center gap-3 mb-4">
-            <Briefcase className="w-5 h-5 text-primary" />
-            <span className="text-sm font-semibold text-primary uppercase tracking-wider">Work History</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+            <Briefcase className="w-4 h-4" />
+            Work History
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 tracking-tight">
-            Professional
-            <span className="text-gradient"> Experience</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+            Professional Experience
           </h2>
           <p className="text-lg text-muted-foreground">
-            6+ years building scalable systems across healthcare, transportation, and AI sectors.
+            6+ years building scalable backend systems across healthcare, transportation, and AI sectors.
           </p>
         </motion.div>
 
-        {/* Experience cards */}
-        <div className="max-w-4xl space-y-6">
-          {experiences.map((exp, index) => (
-            <ExperienceCard key={index} exp={exp} index={index} isInView={isInView} />
-          ))}
+        <div className="max-w-4xl">
+          {/* Timeline */}
+          <div className="relative">
+            {/* Timeline line */}
+            <div className="absolute left-0 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-border to-transparent" />
+
+            {experiences.map((exp, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -30 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                className="relative pl-8 md:pl-20 pb-12 last:pb-0"
+              >
+                {/* Timeline dot */}
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={isInView ? { scale: 1 } : {}}
+                  transition={{ duration: 0.4, delay: index * 0.15 + 0.2, type: "spring", stiffness: 200 }}
+                  className={`absolute left-0 md:left-8 top-1 -translate-x-1/2 w-3 h-3 rounded-full border-2 ${
+                    exp.current 
+                      ? 'bg-primary border-primary' 
+                      : 'bg-background border-muted-foreground/50'
+                  }`}
+                >
+                  {exp.current && (
+                    <span className="absolute inset-0 rounded-full bg-primary animate-ping opacity-50" />
+                  )}
+                </motion.div>
+
+                {/* Card */}
+                <div className="card-premium p-6 md:p-8">
+                  <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
+                    <div>
+                      <div className="flex items-center gap-3 mb-2">
+                        <h3 className="text-xl font-bold text-foreground">
+                          {exp.title}
+                        </h3>
+                        {exp.current && (
+                          <motion.span
+                            initial={{ opacity: 0, scale: 0 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: 0.5, type: "spring" }}
+                            className="px-2.5 py-1 text-xs font-semibold bg-primary text-primary-foreground rounded-full"
+                          >
+                            Current
+                          </motion.span>
+                        )}
+                      </div>
+                      <a 
+                        href={exp.companyUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-primary font-semibold flex items-center gap-2 hover:underline"
+                      >
+                        {exp.company}
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    </div>
+                    <div className="text-right text-sm text-muted-foreground space-y-1">
+                      <p className="flex items-center justify-end gap-1">
+                        <Calendar className="w-3 h-3" />
+                        {exp.period}
+                      </p>
+                      <p className="flex items-center justify-end gap-1">
+                        <MapPin className="w-3 h-3" />
+                        {exp.location}
+                      </p>
+                    </div>
+                  </div>
+
+                  <ul className="space-y-2 mb-6">
+                    {exp.description.map((item, i) => (
+                      <motion.li
+                        key={i}
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ duration: 0.4, delay: index * 0.15 + i * 0.05 + 0.3 }}
+                        className="flex items-start gap-3 text-muted-foreground"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                        <span>{item}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+
+                  <div className="flex flex-wrap gap-2">
+                    {exp.tech.map((tech, i) => (
+                      <motion.span
+                        key={i}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                        transition={{ duration: 0.3, delay: index * 0.15 + 0.5 + i * 0.05 }}
+                        className="px-3 py-1.5 text-xs font-medium bg-secondary text-muted-foreground rounded-lg hover:bg-primary hover:text-primary-foreground transition-colors cursor-default"
+                      >
+                        {tech}
+                      </motion.span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
