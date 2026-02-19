@@ -1,33 +1,11 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Github, Linkedin, Mail, Download, MapPin, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const stats = [
-  { value: "6+", label: "Years Experience" },
-  { value: "2M+", label: "Users Served" },
-  { value: "4", label: "Companies" },
-  { value: "50K+", label: "Daily Transactions" },
-];
+import profileImage from "@/assets/profile.jpeg";
 
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-radial" />
-      <div className="absolute inset-0 pattern-dots" />
-      
-      {/* Decorative blobs */}
-      <motion.div
-        animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.15, 0.1] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 -right-32 w-96 h-96 bg-primary/10 rounded-full blur-3xl"
-      />
-      <motion.div
-        animate={{ scale: [1, 1.15, 1], opacity: [0.1, 0.12, 0.1] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        className="absolute bottom-1/4 -left-32 w-96 h-96 bg-accent/10 rounded-full blur-3xl"
-      />
-
       <div className="container px-6 py-20 relative z-10">
         <div className="max-w-5xl mx-auto">
           <div className="grid lg:grid-cols-[1fr,380px] gap-12 lg:gap-16 items-center">
@@ -146,50 +124,56 @@ const Hero = () => {
               </motion.div>
             </div>
 
-            {/* Right - Stats cards */}
+            {/* Right - Profile Image */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="hidden lg:block"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.3, type: "spring", stiffness: 100 }}
+              className="hidden lg:flex justify-center"
             >
-              <div className="grid grid-cols-2 gap-4">
-                {stats.map((stat, index) => (
-                  <motion.div
-                    key={stat.label}
-                    initial={{ opacity: 0, y: 30, scale: 0.9 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 0.4 + index * 0.12, type: "spring", stiffness: 150 }}
-                    whileHover={{ scale: 1.05, y: -4 }}
-                    className="stat-card border border-border hover:border-primary/30 transition-colors cursor-default"
-                  >
-                    <p className="text-3xl font-bold text-gradient mb-1">{stat.value}</p>
-                    <p className="text-sm text-muted-foreground">{stat.label}</p>
-                  </motion.div>
-                ))}
+              <div className="relative">
+                {/* Glow ring */}
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  className="absolute -inset-3 rounded-full bg-gradient-to-tr from-primary via-accent to-primary opacity-20 blur-sm"
+                />
+                <motion.div
+                  whileHover={{ scale: 1.03 }}
+                  transition={{ type: "spring", stiffness: 200 }}
+                  className="relative w-72 h-72 rounded-full overflow-hidden border-2 border-primary/30 shadow-2xl shadow-primary/10"
+                >
+                  <img
+                    src={profileImage}
+                    alt="Md. Jubaidul Alam"
+                    className="w-full h-full object-cover object-top"
+                  />
+                </motion.div>
               </div>
             </motion.div>
           </div>
 
-          {/* Mobile stats */}
+          {/* Mobile profile image */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 lg:hidden"
+            className="flex justify-center mt-12 lg:hidden"
           >
-            {stats.map((stat, index) => (
+            <div className="relative">
               <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.5 + index * 0.1 }}
-                className="stat-card border border-border"
-              >
-                <p className="text-2xl font-bold text-gradient mb-1">{stat.value}</p>
-                <p className="text-xs text-muted-foreground">{stat.label}</p>
-              </motion.div>
-            ))}
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute -inset-2 rounded-full bg-gradient-to-tr from-primary via-accent to-primary opacity-20 blur-sm"
+              />
+              <div className="relative w-48 h-48 rounded-full overflow-hidden border-2 border-primary/30 shadow-xl shadow-primary/10">
+                <img
+                  src={profileImage}
+                  alt="Md. Jubaidul Alam"
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+            </div>
           </motion.div>
         </div>
 
